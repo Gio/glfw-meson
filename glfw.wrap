@@ -1,0 +1,8 @@
+[wrap-git]
+directory = glfw-3.3.6
+patch_directory = glfw-meson
+url = https://github.com/glfw/glfw.git
+revision = 3.3.6
+
+[provide]
+dependency_names = glfw3
