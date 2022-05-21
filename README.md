@@ -1,5 +1,5 @@
 ### Summary
-A meson build patch for GLFW v3.3.7
+A Meson build system implementation for GLFW v3.3.7
 
 To use stand-alone, extract the contents of the glfw-patch directory into the root glfw-3.3.7 directory.<br>
 To use as a wrap, extract the source tarball into your subproject directory.
@@ -10,6 +10,9 @@ To use as a wrap, extract the source tarball into your subproject directory.
 - MacOS/Cocoa implementation
 
 ##### Changes
+v0.1.1
+- Optimizations for pretty much everything
+
 v0.1.0
 - BSD & SunOS system dependency checks added
 - Restructured project for future sanity
