@@ -5,4 +5,5 @@ url = https://github.com/glfw/glfw.git
 revision = 3.3.7
 
 [provide]
-dependency_names = glfw3
+glfw3 = glfw_dep
+

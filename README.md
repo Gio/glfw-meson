@@ -1,31 +1,13 @@
-### Summary
-A Meson build system implementation for GLFW v3.3.7
+#### Summary
+Meson build system implementation for GLFW v3.3.7
 
-To use stand-alone, extract the contents of the glfw-patch directory into the root glfw-3.3.7 directory.<br>
-To use as a wrap, extract the source tarball into your subproject directory.
+##### History
+Converting GLFW to the Meson build system is something of an outlier from the others, as it began before I conceived the experiment. As such, certain data are missing—log entries, for example—as well as accurate metrics of elapsed time. Even the git records are somewhat truncated as I (embarrassingly) broke my git repo partway through. Fortunately, I did keep a changelog, so there's no real need to suffer through my picayune commits.
 
-##### TODO
-- documentation build system
-- Windows implementation
-- MacOS/Cocoa implementation
+Officially, the glfw-meson project began on 22 April, 2022 with the first operable (Linux/X11) release—tagged v0.0.0—occuring only a few days later. This particular version was lost when I broke my repo, but release v0.1.0 followed shortly afterwards on 30 April, 2022.
 
-##### Changes
-v0.1.1
-- Optimizations for pretty much everything
+##### WrapDB
+As of 2022/05/23, glfw-meson is officially part of the Meson WrapDB!
 
-v0.1.0
-- BSD & SunOS system dependency checks added
-- Restructured project for future sanity
-
-v0.1.0 (pre-2)
-- Lowercased display-api options
-- Added .wrapdb
-- Rewrote Wayland implementation
-- Updated to glfw-3.3.7
-
-v0.1.0 (pre-1)
-- Example binaries now properly install to {libdir}/GLFW
-- Wayland API implemented
-
-v0.0.0
-- Initial push; only builds on Linux for X11
+##### Thanks
+Thanks to elibrokeit and lattis from the #mesonbuild IRC channel on OFTC, because without eli's patience and lattis' previous work, both this and the WrapDB versions would have taken much longer and been a mess.

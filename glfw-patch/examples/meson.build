@@ -11,10 +11,12 @@ getopt = '../deps/getopt.c'
 tinycthread = '../deps/tinycthread.c'
 
 #@ Flags
+c_flags = []
 if is_posix
-  c_flags = ['-D_XOPEN_SOURCE=700']
-else
-  c_flags = []
+  c_flags += '-D_XOPEN_SOURCE=700'
+endif
+if sys_os == 'darwin'
+  c_flags += '-D_DARWIN_C_SOURCE'
 endif
 
 #@ Example executables
@@ -35,6 +37,6 @@ foreach e : examples
              c_args : c_flags,
              dependencies : [glfw_dep, deps],
              build_by_default : true,
-             install : I,
+             install : I_key,
              install_dir : opt_libdir / 'GLFW' / 'examples')
 endforeach

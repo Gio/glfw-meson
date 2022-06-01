@@ -9,12 +9,12 @@ project('glfw', 'c',
                             'warning_level=0'],
          meson_version : '>=0.49.0')
 #@ Project variables
-sys_os = host_machine.system()               #  Returns the OS set in the native or cross configuration file
-sys_cc = meson.get_compiler('c')             #  Returns the C compiler set in the native or cross configuration file
-opt_libdir = get_option('libdir')            #  Returns the library subdirectory
-opt_datadir = get_option('datadir')          #  Returns the data subdirectory
-opt_display = get_option('display-api')      #  Returns the selected backend API
-is_posix = (sys_os == 'linux' or sys_os == 'sunos' or sys_os == 'dragonfly' or sys_os.endswith('bsd') or sys_os == 'darwin')                                                    #
+sys_os = host_machine.system()
+sys_cc = meson.get_compiler('c')
+opt_libdir = get_option('libdir')
+opt_datadir = get_option('datadir')
+opt_display = get_option('display-api')
+is_posix = (sys_os == 'linux' or sys_os == 'sunos' or sys_os == 'dragonfly' or sys_os.endswith('bsd') or sys_os == 'darwin')
 
 
 ### Dependencies ###
@@ -25,7 +25,7 @@ if opt_display == 'osmesa'
   deps += dependency('osmesa')
 #  X11
 elif opt_display == 'x11'
-  foreach x : ['x11', 'xrandr', 'xinerama', 'xcursor', 'xi', 'xkbcommon']
+  foreach x : ['x11', 'xrandr', 'xinerama', 'xcursor', 'xi', 'xkbcommon-x11']
     deps += dependency(x, required : true)
   endforeach
 #  Wayland
@@ -108,7 +108,7 @@ cfg_file = configure_file(configuration : cfg_data,
 
 ### Targets ###
 #@ Install key
-I = get_option('install') 
+I_key = get_option('install')
 #@ Primary target:
 ##   GLFW library
 #  Common files
@@ -181,22 +181,27 @@ elif opt_display == 'cocoa'
 endif
 srcfiles = [s_common, s_display]
 incdirs = include_directories('include', 'src')
+#@ Flags
+c_flags = []
+c_flags += '-D_GLFW_USE_CONFIG_H'
+if sys_os == 'darwin'
+  c_flags += '-D_DARWIN_C_SOURCE'
+endif
 #  Build
-glfw_lib = library('glfw3',
-                    srcfiles,
-                    c_args : ['-D_GLFW_USE_CONFIG_H'],
+glfw_lib = library('glfw3', srcfiles,
+                    c_args : c_flags,
                     include_directories : incdirs,
                     dependencies : deps,
                     version : meson.project_version(),
                     build_by_default : true,
                     pic : true,
-                    install : I)
+                    install : I_key)
 glfw_dep = declare_dependency(include_directories : incdirs, link_with : glfw_lib)
 if meson.version().version_compare('>=0.54.0')
   meson.override_dependency('glfw3', glfw_dep)
 endif
 #  Headers
-if I
+if I_key
   install_headers('include/GLFW/glfw3.h',
                   'include/GLFW/glfw3native.h',
                    subdir : 'GLFW')
@@ -214,7 +219,7 @@ subdir('examples')
 
 ### Post
 #@ Pkg-config
-if I
+if I_key
   pkg = import('pkgconfig')
   pkg.generate(glfw_lib,
                name : 'GLFW',
