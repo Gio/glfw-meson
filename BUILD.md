@@ -1,4 +1,3 @@
-
 #### Usage
 GLFW-Meson can be used either standalone or as a subproject.
 
@@ -29,6 +28,6 @@ Then, simply copy glfw.wrap into the main project's subprojects directory and th
 The main project will automatically pull the correct revision from the glfw repository.
 
 ##### Configuration
-`meson configure`
-`meson configure -D<option>=<value>`
+`meson configure`<br>
+`meson configure -D<option>=<value>`<br>
 `meson configure -Dglfw:<option>=<value>`

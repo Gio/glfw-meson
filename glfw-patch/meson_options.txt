@@ -24,3 +24,7 @@ option('display-api',
         choices : ['osmesa', 'x11', 'wayland', 'win32', 'cocoa'],
         value : 'x11',
         description : 'Choose backend display API.')
+option('vulkan-static',
+        type : 'boolean',
+        value : false,
+        description : 'Linking Vulkan loader directly with application?')

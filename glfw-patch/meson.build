@@ -102,6 +102,12 @@ cfg_data = configuration_data()
 foreach d : ['osmesa', 'x11', 'wayland', 'win32', 'cocoa']
   cfg_data.set('_GLFW_' + d.to_upper(), opt_display == d)
 endforeach
+#if get_option('default_library') == 'shared'
+#  cfg_data.set('_GLFW_BUILD_DLL', 1)
+#endif
+if get_option('vulkan-static')
+  cfg_data.set('_GLFW_VULKAN_STATIC', 1)
+endif
 cfg_file = configure_file(configuration : cfg_data,
                           output : 'glfw_config.h')
 

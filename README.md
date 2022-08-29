@@ -1,5 +1,5 @@
 #### Summary
-Meson build system implementation for GLFW v3.3.7
+A Meson build system implementation for GLFW v3.3.7
 
 ##### History
 Converting GLFW to the Meson build system is something of an outlier from the others, as it began before I conceived the experiment. As such, certain data are missing—log entries, for example—as well as accurate metrics of elapsed time. Even the git records are somewhat truncated as I (embarrassingly) broke my git repo partway through. Fortunately, I did keep a changelog, so there's no real need to suffer through my picayune commits.

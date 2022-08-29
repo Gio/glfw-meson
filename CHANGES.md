@@ -2,7 +2,7 @@
 - [ ] GLFW documentation
 - [x] POSIX/X11 implementation
 - [x] Linux/Wayland implementation
-- [ ] Windows implementation
+- [ ] Windows/MinGW-w64 implementation
 - [ ] MacOS/Cocoa implementation
 
 #### Changes

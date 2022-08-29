@@ -6,4 +6,3 @@ revision = 3.3.7
 
 [provide]
 glfw3 = glfw_dep
-
