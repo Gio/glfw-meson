@@ -1,5 +1,5 @@
-#### Usage
-GLFW-Meson can be used either standalone or as a subproject.
+#### Description
+GLFW-Meson is a drop-in build replacement and can be used either standalone or as a subproject.
 
 ##### Requirements
 - [Meson](https://mesonbuild.com/) version "0.49.0" or later for standalone
